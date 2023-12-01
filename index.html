@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+  text-align: center;
+  background: linear-gradient(150deg, #FFD700, grey);
+    background-repeat: no-repeat;
+} 
+
+div#main-content {
+  display: none;
+}
+
+#logo {
+  animation: scaleUp 10s ease-in-out infinite;
+}
+
+@keyframes scaleUp {
+   0% {
+    transform: scale(.5)
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(.5);
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <img id= "logo" src="https://cdn2.steamgriddb.com/file/sgdb-cdn/logo/195d01f104437ebe2661a317ca2e231c.png" width= 600 height= 200> <br/>
+
+<input id="user-name" type= "text" placeholder="type your name"/>
+<button id="btnID" type= "button" onclick= "showHidden()">click me!</button> <br/>
+<h1 id="hello-message"></h1>
+<h1 id="hello-message2"></h1>
+
+<div id="main-content">
+  
+  <button id="choose-left" type = "button" onclick = "chooseRandomDoor('left')">
+<img id= "door" src= "https://us-tuna-sounds-images.voicemod.net/90bf8ca8-ba64-41c5-9913-247b9e321498.jpg" width= 200 height= 200> 
+</button>
+
+<button id="choose-right"  type = "button" onclick = "chooseRandomDoor('right')">
+<img id= "door2" src = "https://us-tuna-sounds-images.voicemod.net/90bf8ca8-ba64-41c5-9913-247b9e321498.jpg" width= 200 height= 200> 
+ </button></br>
+
+</div>
+
+
+
+
+
+
+<img id= "bee" src= "https://preview.redd.it/pwpks2a80bj31.gif?width=800&auto=webp&s=48bfc3ad55d7d05c07ff193152deac92c9bb090e" width= 200 height= 200>
+
+
+
+</body>
+<script>
+const nameInput = document.getElementById('user-name');
+const helloMessage = document.getElementById('hello-message');
+const helloMessage2 = document.getElementById('hello-message2');
+const mainContent = document.getElementById("main-content");
+const nameButton = document.getElementById("btnID");
+
+//pictures//
+let diamondImg = "https://freepngimg.com/thumb/minecraft/11-2-minecraft-diamond-png-thumb.png";
+
+let fleshImg = "https://wiki.hypixel.net/images/2/2a/SkyBlock_items_enchanted_rotten_flesh.gif";
+
+
+const leftDoor = document.getElementById("choose-left");
+const rightDoor = document.getElementById("choose-right");
+
+
+
+ 
+
+
+function showHidden() {
+
+  console.log(nameInput.value); 
+  //call the element and change the text content//
+  helloMessage.textContent = "Hello "  + nameInput.value + "!"; 
+  
+ helloMessage2.textContent = " You should see two trapdoors. Behind one is a suprise >:), and behind the other is.. another suprise. Choose whichever one you want, but BEE careful.";
+ 
+  let playerName = nameInput.value;
+  console.log(playerName);
+
+  nameInput.style.display = "none";
+  mainContent.style.display = "block";
+  nameButton.style.display = "none";
+  
+  
+} 
+
+ 
+function chooseRandomDoor(selection) {
+  let correctDoor = Math.floor(Math.random() * 2) + 1;
+
+  if (correctDoor == 1 && selection == "left") {
+    leftDoor.innerHTML = "<img src=\'https://wiki.hypixel.net/images/2/20/SkyBlock_items_enchanted_diamond.gif\' width=\'200px\' height=\'200px\'>";
+    rightDoor.innerHTML = "<img src=\'https://wiki.hypixel.net/images/0/0b/SkyBlock_items_potion_of_poison.gif\' width=\'200px\' height=\'200px\'>";
+  }
+  else if (correctDoor == 2 && selection == "right") {
+    rightDoor.innerHTML = "<img src=\'https://wiki.hypixel.net/images/0/0b/SkyBlock_items_potion_of_poison.gif\' width=\'200px\' height=\'200px\'>";
+    leftDoor.innerHTML ="<img src=\'https://wiki.hypixel.net/images/2/20/SkyBlock_items_enchanted_diamond.gif\' width=\'200px\' height=\'200px\'>";
+  }
+  else {
+    leftDoor.innerHTML ="<img src=\'https://wiki.hypixel.net/images/0/0b/SkyBlock_items_potion_of_poison.gif\' width=\'200px\' height=\'200px\'>";
+    rightDoor.innerHTML = "<img src=\'https://wiki.hypixel.net/images/2/20/SkyBlock_items_enchanted_diamond.gif\' width=\'200px\' height=\'200px\'>";
+  }
+}
+
+
+
+
+</script>
+</html>
